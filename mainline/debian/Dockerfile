@@ -91,6 +91,8 @@ RUN set -x \
                         gettext-base \
                         curl \
     && curl -s https://packagecloud.io/install/repositories/DaryL/libnginx-mod-brotli-mainline/script.deb.sh | bash \
+    && apt-get install libnginx-mod-brotli \
+    && apt-get purge -y apt-transport-https gnupg \
     && apt-get remove --purge --auto-remove -y && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
     \
 # if we have leftovers from building, let's purge them (including extra, unnecessary build deps)
