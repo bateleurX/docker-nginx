@@ -140,6 +140,7 @@ for branch in "${branches[@]}"; do
             -e 's,%%PACKAGES%%,'"$packages"',' \
             -e 's,%%PACKAGEREPO%%,'"$packagerepo"',' \
             -e 's,%%REVISION%%,'"$revver"',' \
+            -e 's,%%BRANCH%%,'"$branch"',' \
             "$dir/Dockerfile"
 
         cp -a entrypoint/*.sh "$dir/"

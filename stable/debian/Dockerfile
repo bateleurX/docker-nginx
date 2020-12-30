@@ -43,6 +43,7 @@ RUN set -x \
         amd64|i386|arm64) \
 # arches officialy built by upstream
             echo "deb https://nginx.org/packages/debian/ buster nginx" >> /etc/apt/sources.list.d/nginx.list \
+	    && curl -s https://packagecloud.io/install/repositories/DaryL/libnginx-mod-brotli-stable/script.deb.sh | sudo bash \
             && apt-get update \
             ;; \
         *) \
