@@ -43,9 +43,6 @@ RUN set -x \
         amd64|i386|arm64) \
 # arches officialy built by upstream
             echo "deb https://nginx.org/packages/debian/ buster nginx" >> /etc/apt/sources.list.d/nginx.list \
-	    && apt-get install curl sudo \
-	    && curl -s https://packagecloud.io/install/repositories/DaryL/libnginx-mod-brotli-stable/script.deb.sh | sudo bash \
-	    && apt-get remove curl sudo \
             && apt-get update \
             ;; \
         *) \
@@ -93,6 +90,7 @@ RUN set -x \
                         $nginxPackages \
                         gettext-base \
                         curl \
+    && curl -s https://packagecloud.io/install/repositories/DaryL/libnginx-mod-brotli-stable/script.deb.sh | bash \
     && apt-get remove --purge --auto-remove -y && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
     \
 # if we have leftovers from building, let's purge them (including extra, unnecessary build deps)
