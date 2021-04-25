@@ -10,18 +10,18 @@ declare branches=(
 )
 
 declare -A nginx=(
-    [mainline]='1.19.6'
-    [stable]='1.18.0'
+    [mainline]='1.19.10'
+    [stable]='1.20.0'
 )
 
-defaultnjs='0.5.0'
+defaultnjs='0.5.3'
 declare -A njs=(
-    [stable]='0.4.4'
+#    [stable]='0.4.4'
 )
 
 defaultpkg='1'
 declare -A pkg=(
-    [stable]=2
+#    [stable]=2
 )
 
 defaultdebian='buster'
@@ -29,9 +29,9 @@ declare -A debian=(
     #[stable]='stretch'
 )
 
-defaultalpine='3.12'
+defaultalpine='3.13'
 declare -A alpine=(
-    [stable]='3.11'
+#    [stable]='3.11'
 )
 
 # When we bump njs version in a stable release we don't move the tag in the
@@ -52,9 +52,6 @@ get_packages() {
     case "$distro:$branch" in
         alpine*:*)
             r="r"
-            sep="."
-            ;;
-        debian*:stable)
             sep="."
             ;;
         debian*:*)

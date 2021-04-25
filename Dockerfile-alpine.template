@@ -14,7 +14,7 @@ RUN set -x \
     && nginxPackages="%%PACKAGES%%
     " \
     && case "$apkArch" in \
-        x86_64) \
+        x86_64|aarch64) \
 # arches officially built by upstream
             set -x \
             && KEY_SHA512="e7fa8303923d9b95db37a77ad46c68fd4755ff935d0a534d26eba83de193c76166c68bfe7f65471bf8881004ef4aa6df3e34689c305662750c0172fca5d8552a *stdin" \
@@ -105,6 +105,7 @@ RUN set -x \
 COPY docker-entrypoint.sh /
 COPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
 COPY 20-envsubst-on-templates.sh /docker-entrypoint.d
+COPY 30-tune-worker-processes.sh /docker-entrypoint.d
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 80

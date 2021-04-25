@@ -7,8 +7,8 @@ FROM debian:buster-slim
 
 LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
 
-ENV NGINX_VERSION   1.19.6
-ENV NJS_VERSION     0.5.0
+ENV NGINX_VERSION   1.19.10
+ENV NJS_VERSION     0.5.3
 ENV PKG_RELEASE     1~buster
 
 RUN set -x \
@@ -110,6 +110,7 @@ RUN set -x \
 COPY docker-entrypoint.sh /
 COPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
 COPY 20-envsubst-on-templates.sh /docker-entrypoint.d
+COPY 30-tune-worker-processes.sh /docker-entrypoint.d
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 80
